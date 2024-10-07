@@ -35,14 +35,35 @@ summary(modelo)
 #variáveis independentes (Area, Idade, Local), ajustado pelo número de preditores no modelo.
 
 # 5 - Análise dos resíduos do modelo
-library(car)
-avPlots(modelo)
-
-plot(fitted(modelo), rstandard(modelo))
-abline(0,0)
-
-library(car)
-qqPlot(modelo)
-
-par(mfrow = c(2, 2))  # Configuração para exibir 4 gráficos
+par(mfrow = c(2, 2))
 plot(modelo)
+
+# Grafico 1 - Residuo vs Ajustado
+# Parece haver uma leve curvatura, o que pode indicar que a relação entre as variáveis não 
+# é totalmente linear e o modelo pode não estar capturando perfeitamente a estrutura dos dados.
+
+# Gráfico 2 - QQ Plot
+# Os pontos parecem se desviar nos extremoss, sugerindo uma possível violação da suposição de normalidade
+# dos resíduos, especialmente nas extremidades superiores.
+
+# Gráfico 3 - Scale-Location:
+# O gráfico mostra uma tendência crescente, o que sugere que os resíduos têm variância não constante, 
+# aumentando conforme os valores ajustados crescem.
+
+# Gráfico 4 - Resíduos vs Leverage
+# Algumas observações, como a 52 e a 39, parecem ter alta influência, o que significa que elas podem estar impactando 
+# fortemente o ajuste do modelo. A linha de "Cook's distance" sugere que esses pontos podem ser potenciais outliers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
